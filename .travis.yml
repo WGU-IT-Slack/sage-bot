@@ -16,3 +16,6 @@ script: mix test --trace --color
 deploy:
   provider: script
   script: bash scripts/deploy.sh
+  on:
+    repo: WGU-IT-Slac/sage-bot
+    branch: DanMHammer-VPS
