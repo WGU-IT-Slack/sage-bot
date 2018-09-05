@@ -17,5 +17,5 @@ deploy:
   provider: script
   script: bash scripts/deploy.sh
   on:
-    repo: WGU-IT-Slac/sage-bot
+    repo: WGU-IT-Slack/sage-bot
     branch: DanMHammer-VPS
