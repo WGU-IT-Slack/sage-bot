@@ -1,37 +1,44 @@
-# Sage - Slack Bot
+# Python: Getting Started
 
-[![Build Status](https://travis-ci.com/WGU-IT-Slack/sage-bot.svg?branch=master)](https://travis-ci.com/WGU-IT-Slack/sage-bot)
+A barebones Django app, which can easily be deployed to Heroku.
 
-## Development
+This application supports the [Getting Started with Python on Heroku](https://devcenter.heroku.com/articles/getting-started-with-python) article - check it out.
 
-Make sure you have [Elixir](https://elixir-lang.org/install.html) installed.
+## Running Locally
 
-- `mix deps.get` to install dependencies
-- `mix run --no-halt` to run the bot locally
-- `mix test` to run the tests
+Make sure you have Python [installed properly](http://install.python-guide.org). Also, install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) and [Postgres](https://devcenter.heroku.com/articles/heroku-postgresql#local-setup).
 
-**Please** make sure you have your [editorconfig plugin](http://editorconfig.org/#download) installed in the editor you are using (if a plugin is available).
+```sh
+$ git clone git@github.com:heroku/python-getting-started.git
+$ cd python-getting-started
 
+$ pipenv install
 
-## Adding Course Triggers
+$ createdb python_getting_started
 
-New courses are added to WGU all the time, so if you want to help keep this bot up-to-date, please contribute!
+$ python manage.py migrate
+$ python manage.py collectstatic
 
-For very basic triggers, you can edit the [course-list](https://github.com/wgu-it-slack/sage-bot/blob/master/lib/sage/support/course_list.ex). Observe and follow the existing format to add new courses.
-
-## Adding Responders
-
-Make a new responder module in `lib/sage/responders` and add it to the list of `:responders` in `config/config.exs`
-
-```elixir
-config :sage, Sage.Robot,
-  adapter: Hedwig.Adapters.Slack,
-  name: "sage",
-  aka: "Sage",
-  responders: [
-    # ...
-    {Sage.Responders.MyResponder, []},
-  ]
+$ heroku local
 ```
 
-**Don't forget** to make a new test for your responder in `test/responders`, like `Sage.Responders.MyResponderTest`
+Your app should now be running on [localhost:5000](http://localhost:5000/).
+
+## Deploying to Heroku
+
+```sh
+$ heroku create
+$ git push heroku master
+
+$ heroku run python manage.py migrate
+$ heroku open
+```
+or
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+## Documentation
+
+For more information about using Python on Heroku, see these Dev Center articles:
+
+- [Python on Heroku](https://devcenter.heroku.com/categories/python)
