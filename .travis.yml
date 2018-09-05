@@ -16,9 +16,3 @@ script: mix test --trace --color
 deploy:
   provider: script
   script: bash scripts/deploy.sh
-  on:
-    branches:
-    - DanMHammer-VPS
-    - master
-      
-      
