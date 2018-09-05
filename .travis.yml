@@ -17,6 +17,8 @@ deploy:
   provider: script
   script: bash scripts/deploy.sh
   on:
-    branch: all
+    branches:
+    - DanMHammer-VPS
+    - master
       
       
