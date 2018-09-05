@@ -6,6 +6,8 @@ matrix:
       elixir: 1.4
     - otp_release: 19.3
       elixir: 1.4
+addons:
+  ssh_known_hosts: $IP
 script: mix test --trace --color
 before_install:
     - openssl aes-256-cbc -K $encrypted_620f792da5a3_key -iv $encrypted_620f792da5a3_iv 
