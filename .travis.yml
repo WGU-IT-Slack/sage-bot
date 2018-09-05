@@ -1,5 +1,5 @@
 language: elixir
-sudo: true
+sudo: false
 matrix:
   include:
     - otp_release: 18.3
@@ -10,10 +10,10 @@ addons:
   ssh_known_hosts: 
    - $IP
 before_script: echo -e "Host $IP *\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+before_install:
+  - openssl aes-256-cbc -K $encrypted_620f792da5a3_key -iv $encrypted_620f792da5a3_iv 
+  -in id_rsa.enc -out ~/id_rsa -d
 script: mix test --trace --color
-# before_install:
-#    - openssl aes-256-cbc -K $encrypted_620f792da5a3_key -iv $encrypted_620f792da5a3_iv 
-#     -in id_rsa.enc -out ~/id_rsa -d
 deploy:
   provider: script
   script: bash scripts/deploy.sh
