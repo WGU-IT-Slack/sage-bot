@@ -1,5 +1,5 @@
 language: elixir
-sudo: false
+sudo: true
 matrix:
   include:
     - otp_release: 18.3
